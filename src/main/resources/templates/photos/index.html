@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<link th:rel="stylesheet" th:href="@{/webjars/bootstrap/5.2.3/css/bootstrap.min.css}" />
+<link th:rel="stylesheet" th:href="@{/webjars/font-awesome/6.3.0/css/all.min.css} " />
+<title>Foto</title>
+</head>
+<body>
+	<div class="container">
+		<div class="row">
+			<h1>Pagina foto</h1>
+			<div>
+				<table class="table">
+					<thead>
+						<tr>
+							<th>Id</th>
+							<th>Titolo</th>
+							<th>Tag</th>
+							<th>Descrizione</th>
+							<th>Url</th>
+							<th>Visibile</th>
+							<th></th>
+							<th></th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="photo : ${photos}" th:object="${photo}">
+							<th><a th:href="@{'/photos/{id}'(id=${photo.id})}">[[*{id}]]</a></th>
+							<td>[[*{title}]]</td>
+							<td>[[*{tag}]]</td>
+							<td>[[*{description}]]</td>
+							<td>[[*{url}]]</td>
+							<td>[[*{isVisible}]]</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+
+	<script th:src="@{/webjars/bootstrap/5.2.3/js/bootstrap.bundle.min.js}"></script>
+</body>
+</html>
