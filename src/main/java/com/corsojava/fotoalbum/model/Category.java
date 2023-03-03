@@ -5,6 +5,8 @@ import java.util.List;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -29,6 +31,7 @@ public class Category {
 	@Column(unique = true)
 	private String name;
 	
+	@JsonBackReference
 	@ManyToMany(mappedBy = "categories")
 	@OnDelete(action = OnDeleteAction.CASCADE)
 	private List<Photo> photos;
