@@ -7,18 +7,25 @@
 <title>Dettaglio foto</title>
 </head>
 <body>
-<div class="container">
+	<div class="container">
 		<div class="row">
 			<h1>Dettaglio foto</h1>
 			<div>
-			<p>
-			[[${photo.id}]] - 
-			[[${photo.title}]] -
-			[[${photo.description}]] -
-			[[${photo.url}]] -
-			[[${photo.tag}]] -
-			[[${photo.isVisible}]]
-			</p>
+				<p>[[${photo.id}]] - [[${photo.title}]] -
+					[[${photo.description}]] - [[${photo.url}]] - [[${photo.tag}]] -
+					[[${photo.isVisible}]]</p>
+				<div th:if="${photo.categories.size()>0}">
+					<p>Categorie:</p>
+					<ul th:each="category : ${photo.categories}">
+						<li>[[${category.name}]]</li>
+					</ul>
+				</div>
+				<div th:if="${photo.comments.size()>0}">
+					<p>Commenti:</p>
+					<ul th:each="comment : ${photo.comments}">
+						<li>[[${comment.text}]]</li>
+					</ul>
+				</div>
 			</div>
 		</div>
 	</div>
