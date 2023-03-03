@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/css/bootstrap.min.css" integrity="sha512-SbiR/eusphKoMVVXysTKG/7VseWii+Y3FdHrt0EpKgpToZeemhqHeZeLWLhJutz/2ut2Vw1uQEj2MbRF+TVBUA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+    <title>Dettaglio foto</title>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <h1>Dettaglio foto</h1>
+        <div>
+            <h1>Foto <span id="photo_id"></span></h1>
+            <p>Titolo: <span id="photo_title"></span></p>
+            <p>Tag: <span id="photo_tag"></span></p>
+            <p>Descrizione: <span id="photo_decsription"></span></p>
+            <p>Url: <span id="photo_url"></span></p>
+            <p id="photo_categories"></p>
+            <ul id="photo_category">
+
+            </ul>
+            <p id="photo_comments"></p>
+            <ul id="photo_comment">
+                
+            </ul>
+        </div>
+    </div>
+</div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/js/bootstrap.min.js" integrity="sha512-1/RvZTcCDEUjY/CypiMz+iqqtaoQfAITmNSJY17Myp4Ms5mdxPS5UV7iOfdZoxcGhzFbOm6sntTKJppjvuhg4g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="/script/show.js"></script>
+</body>
+</html>
