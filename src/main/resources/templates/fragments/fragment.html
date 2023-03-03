@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+<!--/* ----------------------FORM PHOTO--------------------------------- */-->
+	<th:block th:fragment="form">
+		<div class="mb-3">
+			<label for="title" class="form-label">Titolo</label> <input
+				type="text" class="form-control" id="title" th:field="*{title}"
+				th:errorClass="is-invalid">
+			<div th:if="${#fields.hasErrors('title')}" class="invalid-feedback">
+				<ul>
+					<li th:each="err : ${#fields.errors('title')}">[[${err}]]</li>
+				</ul>
+			</div>
+		</div>
+
+		<div class="mb-3">
+			<label for="description" class="form-label">Descrizione</label> <input
+				type="text" class="form-control" id="description"
+				th:field="*{description}" th:errorClass="is-invalid">
+			<div th:if="${#fields.hasErrors('description')}"
+				class="invalid-feedback">
+				<ul>
+					<li th:each="err : ${#fields.errors('description')}">[[${err}]]</li>
+				</ul>
+			</div>
+		</div>
+
+		<div class="mb-3">
+			<label for="url" class="form-label">Url</label> <input type="text"
+				class="form-control" id="url" th:field="*{url}"
+				th:errorClass="is-invalid">
+			<div th:if="${#fields.hasErrors('url')}" class="invalid-feedback">
+				<ul>
+					<li th:each="err : ${#fields.errors('url')}">[[${err}]]</li>
+				</ul>
+			</div>
+		</div>
+
+		<div class="mb-3">
+			<label for="tag" class="form-label">Tag</label> <input type="text"
+				class="form-control" id="tag" th:field="*{tag}"
+				th:errorClass="is-invalid">
+			<div th:if="${#fields.hasErrors('tag')}" class="invalid-feedback">
+				<ul>
+					<li th:each="err : ${#fields.errors('tag')}">[[${err}]]</li>
+				</ul>
+			</div>
+		</div>
+
+		<div class="mb-3">
+			<label for="isAvailable" class="form-label">Visibile:</label><br>
+			<input type="radio" id="visibleTrue" name="isVisible" value="1"
+				th:field="*{isVisible}">   <label for="visibleTrue">Si</label><br>
+			<input type="radio" id="visibleFalse" name="isVisible" value="1"
+				th:field="*{isVisible}">   <label for="visibleFalse">No</label>
+		</div>
+
+		<div class="mb-3">
+			<label class="input-group">Categoria: </label>
+			<div th:each="category : ${categories}" class="me-4">
+				<input type="checkbox" th:value="${category.id}"
+					th:field="*{categories}" th:id="|categories_${category.id}|">
+				<label th:for="|categories_${category.id}|">[[${category.name}]]</label>
+			</div>
+		</div>
+
+		<div>
+			<a class="btn btn-primary" th:href="@{/photos}" role="button">Annulla</a>
+			<button type="submit" class="btn btn-primary">Invia</button>
+		</div>
+	</th:block>
+
+</body>
+</html>

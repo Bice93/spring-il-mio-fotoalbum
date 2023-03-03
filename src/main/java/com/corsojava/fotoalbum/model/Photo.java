@@ -3,6 +3,7 @@ package com.corsojava.fotoalbum.model;
 
 import java.util.List;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -10,6 +11,9 @@ import jakarta.persistence.Id;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 
 @Entity
 @Table(name="photos")
@@ -18,14 +22,27 @@ public class Photo {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
+	@NotNull 
+	@NotEmpty(message="Il campo 'Title' non può essere vuoto")
+	@Size(min=5, max=250)
 	private String title;
 	
+	@NotNull
+	@NotEmpty(message="Il campo 'Description' non può essere vuoto")
+	@Size(min=5, max=250)
 	private String description;
 	
+	@NotNull 
+	@NotEmpty(message="Il campo 'Url' non può essere vuoto")
+	@Size(min=5, max=250)
 	private String url;
 	
+	@NotNull
+	@NotEmpty(message="Il campo 'Tag' non può essere vuoto")
+	@Size(min=3, max=250)
 	private String tag;
 	
+	@Column(columnDefinition = "boolean default false")
 	private Boolean isVisible;
 	
 	@OneToMany(mappedBy = "photo")
