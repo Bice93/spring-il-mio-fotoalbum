@@ -76,5 +76,22 @@
 		</div>
 	</th:block>
 
+<!--/* ----------------------FORM CATEGORIES--------------------------------- */-->
+	<th:block th:fragment="formCategories">
+		<div class="mb-3">
+			<label for="name" class="form-label">Nome</label> <input
+				type="text" class="form-control" id="name" th:field="*{name}" th:errorClass="is-invalid">
+			 <div th:if="${#fields.hasErrors('name')}" class="invalid-feedback">
+				<ul>
+					<li th:each="err : ${#fields.errors('name')}">[[${err}]]</li>
+				</ul>
+			</div> 
+		</div>
+
+		<div>
+			<a class="btn btn-primary" th:href="@{/categories}" role="button">Annulla</a>
+			<button type="submit" class="btn btn-primary">Invia</button>
+		</div>
+	</th:block>
 </body>
 </html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<link th:rel="stylesheet" th:href="@{/webjars/bootstrap/5.2.3/css/bootstrap.min.css}" />
+<title>Modifica categoria</title>
+</head>
+<body>
+		<div class="container">
+		<div class="row">
+			<h1>Modifica categoria</h1>
+			
+			<div>
+				<form id="category-form" th:object="${category}" th:action="@{/categories/edit/{id}(id=${category.id})}" method="POST">
+					<div th:replace="~{fragments/fragment :: formCategories}"></div>
+				</form>
+				
+			</div>
+		</div>
+	</div>
+	<script th:src="@{/webjars/bootstrap/5.2.3/js/bootstrap.bundle.min.js}"></script>
+</body>
+</html>
