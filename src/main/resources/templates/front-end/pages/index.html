@@ -6,31 +6,52 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/css/bootstrap.min.css" integrity="sha512-SbiR/eusphKoMVVXysTKG/7VseWii+Y3FdHrt0EpKgpToZeemhqHeZeLWLhJutz/2ut2Vw1uQEj2MbRF+TVBUA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
     <title>Home</title>
 </head>
 <body>
-<div class="container">
-    <div class="row">
-        <h1>Foto di Bianca</h1>
-        <div>
-            <table class="table">
-                <thead>
-                  <tr>
-                    <th>Id</th>
-                    <th>Titolo</th>
-                    <th>Tag</th>
-                    <th>Descrizione</th>
-                    <th>Url</th>
-                    <th>Visibile</th>
-                  </tr>
-                </thead>
-                <tbody id="photo_table" class="table-group-divider">
-                  
-                </tbody>
-              </table>
-        </div>
+
+  <header>
+    <nav id="nav" class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+      <a class="navbar-brand" id="logo" href="#">MyOnlinePhoto</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/">Home</a>
+          </li>
+        </ul>
+      </div>
+      <div class="text-end fs-3 px-3">
+        <a href="" class="text-black"><i class="fa-solid fa-unlock"></i></a>
+        <a href="" class="text-black"><i class="fa-solid fa-lock"></i></a>
+      </div>
     </div>
-</div>
+  </nav>
+  </header>
+<main class="my-4">
+  <div class="text-end p-3">
+    <form class="style_form">
+      <label class="d-block fs-6">Filter by</label> 
+      <input id="value_photo" placeholder="Cerca la foto per titolo o tag..." type="text"> 
+        <!-- <input type="submit" id="myBtnFilter" value="Cerca"> -->
+    </form>
+  </div>
+
+	<div class="container">
+		<div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-2" id="photo_box">
+      
+		</div>
+	</div>
+</main>
+
+<footer class="fixed-bottom">
+  <div id="footer"></div>
+</footer>
+
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/js/bootstrap.min.js" integrity="sha512-1/RvZTcCDEUjY/CypiMz+iqqtaoQfAITmNSJY17Myp4Ms5mdxPS5UV7iOfdZoxcGhzFbOm6sntTKJppjvuhg4g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>

@@ -2,22 +2,34 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-<link th:rel="stylesheet" th:href="@{/webjars/bootstrap/5.2.3/css/bootstrap.min.css}" />
+<div th:replace="~{fragments/fragment :: head_style}"></div>
 <title>Crea foto</title>
 </head>
-<body>
-	<div class="container">
-		<div class="row">
-			<h1>Crea nuova foto</h1>
-			
-			<div>
-				<form id="photo-form" th:object="${photo}" th:action="@{/photos/create}" method="POST">
-					<div th:replace="~{fragments/fragment :: form}"></div>
-				</form>
-				
+<body class="body">
+	<header>
+		<div th:replace="~{fragments/fragment :: navbar}"></div>
+	</header>
+
+	<main class="my-4">
+		<div class="container">
+			<div class="row">
+				<h1>Crea nuova foto</h1>
+
+				<div>
+					<form id="photo-form" th:object="${photo}"
+						th:action="@{/photos/create}" method="POST">
+						<div th:replace="~{fragments/fragment :: form}"></div>
+					</form>
+
+				</div>
 			</div>
 		</div>
-	</div>
-	<script th:src="@{/webjars/bootstrap/5.2.3/js/bootstrap.bundle.min.js}"></script>
+	</main>
+
+	<footer>
+		<div th:replace="~{fragments/fragment :: footer}"></div>
+	</footer>
+
+	<div th:replace="~{fragments/fragment :: script_style}"></div>
 </body>
 </html>

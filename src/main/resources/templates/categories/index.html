@@ -2,44 +2,62 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-<link th:rel="stylesheet" th:href="@{/webjars/bootstrap/5.2.3/css/bootstrap.min.css}" />
+<div th:replace="~{fragments/fragment :: head_style}"></div>
 <title>Categorie</title>
 </head>
-<body>
-	<div class="container">
-		<div class="row">
-			<h1>Pagina categorie</h1>
+<body class="body">
+	<header>
+		<div th:replace="~{fragments/fragment :: navbar}"></div>
+	</header>
+
+	<main class="my-4">
+		<section class="d-flex justify-content-between mx-5 p-4">
 			<div>
-				<a class="btn btn-primary" th:href="@{/categories/create}" role="button">Crea</a>
-				<a class="btn btn-primary" th:href="@{/photos}" role="button">Foto</a>
+				<p class="fs-6">
+					Aggiungi Categoria <a th:href="@{/categories/create}"><i
+						class="ms-2 fa-solid fa-plus text-dark fs-3 align-middle"></i></a>
+				</p>
 			</div>
-			<div>
-				<table class="table">
-					<thead>
-						<tr>
-							<th>Id</th>
-							<th>Nome</th>
-							<th>Modifica</th>
-							<th>Elimina</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr th:each="category : ${categories}" th:object="${category}">
-							<th><a>[[*{id}]]</a></th>
-							<td>[[*{name}]]</td>
-							<td><a class="btn btn-warning" th:href="@{'/categories/edit/{id}'(id=${category.id})}" role="button">Modifica</a></td>
-							<td>
-								<form th:action="@{'/categories/delete/{id}'(id=${category.id})}"
-									method="POST">
-									<button type="submit" id="submitButton" class="btn btn-danger">Elimina</button>
-								</form>
-							</td>
-						</tr>
-					</tbody>
-				</table>
+		</section>
+		<div class="container">
+			<div class="row">
+				<div>
+					<table class="table">
+						<thead>
+							<tr>
+								<th class="col-1">Id</th>
+								<th class="col-9">Nome</th>
+								<th class="col-1">Modifica</th>
+								<th class="col-1">Elimina</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr th:each="category : ${categories}" th:object="${category}">
+								<th class="col-1"><a>[[*{id}]]</a></th>
+								<td class="col-9">[[*{name}]]</td>
+								<td class="col-1"><a class="btn btn-warning"
+									th:href="@{'/categories/edit/{id}'(id=${category.id})}"
+									role="button">Modifica</a></td>
+								<td class="col-1">
+									<form
+										th:action="@{'/categories/delete/{id}'(id=${category.id})}"
+										method="POST">
+										<button type="submit" id="submitButton" class="btn btn-danger">Elimina</button>
+									</form>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
 			</div>
 		</div>
-	</div>
-	<script th:src="@{/webjars/bootstrap/5.2.3/js/bootstrap.bundle.min.js}"></script>
+	</main>
+
+
+	<footer class="fixed-bottom">
+		<div th:replace="~{fragments/fragment :: footer}"></div>
+	</footer>
+
+	<div th:replace="~{fragments/fragment :: script_style}"></div>
 </body>
 </html>

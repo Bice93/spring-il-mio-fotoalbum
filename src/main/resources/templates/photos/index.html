@@ -2,53 +2,77 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-<link th:rel="stylesheet" th:href="@{/webjars/bootstrap/5.2.3/css/bootstrap.min.css}" />
+<div th:replace="~{fragments/fragment :: head_style}"></div>
 <title>Foto</title>
 </head>
-<body>
-	<div class="container">
-		<div class="row">
-			<h1>Pagina foto</h1>
+<body class="body">
+	<header>
+		<div th:replace="~{fragments/fragment :: navbar}"></div>
+	</header>
+
+	<main class="my-4">
+		<section class="d-flex justify-content-between mx-5 p-4">
 			<div>
-				<a class="btn btn-primary" th:href="@{/photos/create}" role="button">Crea</a>
-				<a class="btn btn-primary" th:href="@{/categories}" role="button">Categorie</a>
+				<p class="fs-6">
+					Aggiungi Foto <a th:href="@{/photos/create}"><i
+						class="ms-2 fa-solid fa-plus text-dark fs-3 align-middle"></i></a>
+				</p>
 			</div>
 			<div>
-				<table class="table">
-					<thead>
-						<tr>
-							<th>Id</th>
-							<th>Titolo</th>
-							<th>Tag</th>
-							<th>Descrizione</th>
-							<th>Url</th>
-							<th>Visibile</th>
-							<th>Modifica</th>
-							<th>Elimina</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr th:each="photo : ${photos}" th:object="${photo}">
-							<th><a th:href="@{'/photos/{id}'(id=${photo.id})}">[[*{id}]]</a></th>
-							<td>[[*{title}]]</td>
-							<td>[[*{tag}]]</td>
-							<td>[[*{description}]]</td>
-							<td>[[*{url}]]</td>
-							<td>[[*{isVisible}]]</td>
-							<td><a class="btn btn-warning" th:href="@{'/photos/edit/{id}'(id=${photo.id})}" role="button">Modifica</a></td>
-							<td>
-								<form th:action="@{'/photos/delete/{id}'(id=${photo.id})}"
-									method="POST">
-									<button type="submit" id="submitButton" class="btn btn-danger">Elimina</button>
-								</form>
-							</td>
-						</tr>
-					</tbody>
-				</table>
+				<form class="style_form" th:if="${photos.size() > 0}">
+					<label class="d-block fs-6">Filter by</label> <input
+						id="value_photo" placeholder="Cerca la foto per titolo o tag..."
+						type="text" name="search" th:value="${keyword}"> <input
+						id="myBtn" type="submit" value="Cerca">
+				</form>
+			</div>
+		</section>
+		<div class="container">
+			<div class="row">
+				<div>
+					<table class="table">
+						<thead>
+							<tr>
+								<th>Id</th>
+								<th>Titolo</th>
+								<th>Tag</th>
+								<th>Descrizione</th>
+								<th class="w-25">Foto</th>
+								<th>Visibile</th>
+								<th>Modifica</th>
+								<th>Elimina</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr th:each="photo : ${photos}" th:object="${photo}">
+								<th><a class="text-black"
+									th:href="@{'/photos/{id}'(id=${photo.id})}">[[*{id}]]</a></th>
+								<td>[[*{title}]]</td>
+								<td>[[*{tag}]]</td>
+								<td>[[*{description}]]</td>
+								<td><img th:alt="${photo.title} + '\'s photo'"
+									th:src="${photo.url}" class="img-thumbnail w-50"></td>
+								<td>[[*{isVisible}]]</td>
+								<td><a class="btn btn-warning"
+									th:href="@{'/photos/edit/{id}'(id=${photo.id})}" role="button">Modifica</a></td>
+								<td>
+									<form th:action="@{'/photos/delete/{id}'(id=${photo.id})}"
+										method="POST">
+										<button type="submit" id="submitButton" class="btn btn-danger">Elimina</button>
+									</form>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
 			</div>
 		</div>
-	</div>
+	</main>
 
-	<script th:src="@{/webjars/bootstrap/5.2.3/js/bootstrap.bundle.min.js}"></script>
+	<footer class="fixed-bottom">
+		<div th:replace="~{fragments/fragment :: footer}"></div>
+	</footer>
+
+	<div th:replace="~{fragments/fragment :: script_style}"></div>
 </body>
 </html>

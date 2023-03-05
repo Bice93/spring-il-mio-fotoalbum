@@ -2,33 +2,47 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-<link th:rel="stylesheet" th:href="@{/webjars/bootstrap/5.2.3/css/bootstrap.min.css}" />
-<link th:rel="stylesheet" th:href="@{/webjars/font-awesome/6.3.0/css/all.min.css} " />
+<div th:replace="~{fragments/fragment :: head_style}"></div>
 <title>Dettaglio foto</title>
 </head>
-<body>
-	<div class="container">
-		<div class="row">
-			<h1>Dettaglio foto</h1>
-			<div>
-				<p>[[${photo.id}]] - [[${photo.title}]] -
-					[[${photo.description}]] - [[${photo.url}]] - [[${photo.tag}]] -
-					[[${photo.isVisible}]]</p>
-				<div th:if="${photo.categories.size()>0}">
-					<p>Categorie:</p>
-					<ul th:each="category : ${photo.categories}">
-						<li>[[${category.name}]]</li>
-					</ul>
-				</div>
-				<div th:if="${photo.comments.size()>0}">
-					<p>Commenti:</p>
-					<ul th:each="comment : ${photo.comments}">
-						<li>[[${comment.text}]]</li>
-					</ul>
+<body class="body">
+	<header>
+		<div th:replace="~{fragments/fragment :: navbar}"></div>
+	</header>
+
+	<main class="my-4">
+		<div class="container">
+			<div class="row">
+				<div>
+					<div class="text-center">
+						<h1>[[${photo.id}]] - [[${photo.title}]]</h1>
+						<img th:alt="${photo.title} + '\'s photo'" th:src="${photo.url}">
+					</div>
+					<h6>#[[${photo.tag}]]</h6>
+					<h6 class="d-inline">Visibile:</h6>
+					<span>[[${photo.isVisible}]]</span>
+					<p class="my-2">[[${photo.description}]]</p>
+					<div th:if="${photo.categories.size()>0}">
+						<h6>Categorie:</h6>
+						<dl th:each="category : ${photo.categories}">
+							<dd>[[${category.name}]]</dd>
+						</dl>
+					</div>
+					<div th:if="${photo.comments.size()>0}">
+						<h6>Commenti:</h6>
+						<dl th:each="comment : ${photo.comments}">
+							<dd>[[${comment.text}]]</dd>
+						</dl>
+					</div>
 				</div>
 			</div>
 		</div>
-	</div>
-	<script th:src="@{/webjars/bootstrap/5.2.3/js/bootstrap.bundle.min.js}"></script>
+	</main>
+
+	<footer>
+		<div th:replace="~{fragments/fragment :: footer}"></div>
+	</footer>
+
+	<div th:replace="~{fragments/fragment :: script_style}"></div>
 </body>
 </html>
