@@ -3,6 +3,7 @@ package com.corsojava.fotoalbum.model;
 
 import java.util.List;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -45,7 +46,7 @@ public class Photo {
 	@Column(columnDefinition = "boolean default false")
 	private Boolean isVisible;
 	
-	@OneToMany(mappedBy = "photo")
+	@OneToMany(mappedBy = "photo", cascade = CascadeType.ALL)
 	private List<Comment> comments;
 	
 	@ManyToMany
