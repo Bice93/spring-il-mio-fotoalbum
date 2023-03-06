@@ -2,7 +2,6 @@ package com.corsojava.fotoalbum.api;
 
 import java.util.List;
 import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -27,10 +26,12 @@ public class PhotoApiController {
 	public List<Photo> index(@RequestParam(name="search", required = false) String keyword){
 		List<Photo> photoList;
 		if (keyword != null && !keyword.isEmpty()) {
-			photoList = photoR.findByTitleLikeOrTagLike("%" + keyword + "%", "%" + keyword + "%");
+			photoList = photoR.findByTitleLikeAndIsVisibleTrueOrTagLikeAndIsVisibleTrue("%" + keyword + "%", "%" + keyword + "%");
+			//photoList = photoR.findByTitleLikeOrTagLike("%" + keyword + "%", "%" + keyword + "%");
 		} else {
-			photoList = photoR.findAll();
+			photoList = photoR.findByIsVisibleTrue();
 		}
+;
 		return photoList;
 	}
 	

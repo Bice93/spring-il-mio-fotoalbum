@@ -7,7 +7,7 @@ function photoList() {
     axios.get('http://localhost:8080/api/photos').then((response) => {
         //console.log("richiesta ok", response.data);
         photos = response.data;
-        //console.log(photos);
+        console.log(photos);
         if(photos.length > 0){
         boxPhotos.innerHTML='';
         photos.forEach(photo => {
@@ -42,17 +42,18 @@ photoList();
 // ----------- Ricerca per titolo o tag -----------------
 const element = document.getElementById('myBtnFilter');
 
-function search(){
+function search() {
 	const filter = input.value;
-    axios.get(`http://localhost:8080/api/photos?search=${filter}`).then((response) =>{
+	axios.get(`http://localhost:8080/api/photos?search=${filter}`).then((response) => {
 		//console.log(response);
-        photos = response.data;
-        //console.log(photos);
-        boxPhotos.innerHTML='';
-        photos.forEach(photo => {
-            //console.log(photo);
-            if(photo.isVisible){
-            boxPhotos.innerHTML += `
+		photos = response.data;
+		console.log(photos);
+		if (photos.length > 0) {
+			boxPhotos.innerHTML = '';
+			photos.forEach(photo => {
+				//console.log(photo);
+				if (photo.isVisible) {
+					boxPhotos.innerHTML += `
             <div class="col">
 				<div class="rounded-0 card_img">
                 <a href="/show?id=${photo.id}">
@@ -64,8 +65,12 @@ function search(){
                     </a>
 				</div>
 			</div>`;
-			}
-    	});
+				}
+			});
+
+		} else {
+			boxPhotos.innerHTML = '<h3>Al momento non sono presenti foto!</h3>';
+		}
 	});
 }
 element.onclick = function(){search()};
