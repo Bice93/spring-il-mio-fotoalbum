@@ -93,5 +93,10 @@ body{
 	font-size: 1.2rem;
 }
 
+.myBtnForm.myBtnFormSize{
+	font-size: .8rem;
+	cursor: pointer;
+}
+
 
 

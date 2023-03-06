@@ -1,7 +1,10 @@
 package com.corsojava.fotoalbum.api;
 
 import java.util.List;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -41,7 +44,6 @@ public class CommentApiController {
 	public Comment create(@PathVariable("id") Long id, @RequestBody Comment comment) {
 		Photo photo = photoR.getReferenceById(id);
 		comment.setPhoto(photo);
-		comment.getText();
 		return commentR.save(comment);
 		
 	}

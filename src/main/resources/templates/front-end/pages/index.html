@@ -32,11 +32,16 @@
   </nav>
   </header>
 <main class="my-4">
-  <div class="text-end p-3">
-    <form class="style_form">
+  <div class="text-end p-3 d-flex justify-content-end">
+    <form action="/" class="style_form d-flex">
+    <div>
       <label class="d-block fs-6">Filter by</label> 
-      <input id="value_photo" placeholder="Cerca la foto per titolo o tag..." type="text"> 
-        <!-- <input type="submit" id="myBtnFilter" value="Cerca"> -->
+      <input id="value_photo" placeholder="Cerca la foto per titolo o tag..." type="text">     
+    </div>
+      <div class="d-flex">
+        <p class="myBtnForm myBtnFormSize ms-2" id="myBtnFilter">Cerca</p>
+        <p class="myBtnForm myBtnFormSize ms-1" id="myBtnReset" onclick="photoList()">Reset</p>      
+      </div>
     </form>
   </div>
 
