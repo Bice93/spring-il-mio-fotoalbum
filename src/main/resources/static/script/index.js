@@ -8,6 +8,7 @@ function photoList() {
         //console.log("richiesta ok", response.data);
         photos = response.data;
         //console.log(photos);
+        if(photos.length > 0){
         boxPhotos.innerHTML='';
         photos.forEach(photo => {
             //console.log(photo);
@@ -26,6 +27,10 @@ function photoList() {
 			</div>`;			
 			}
         });
+			
+		} else{
+			boxPhotos.innerHTML= '<h3>Al momento non sono presenti foto!</h3>';
+		}
 
     }).catch((error) => {
         //console.log("richiesta errata", error)

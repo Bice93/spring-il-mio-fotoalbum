@@ -15,6 +15,8 @@ import com.corsojava.fotoalbum.model.Photo;
 import com.corsojava.fotoalbum.repository.CommentRepository;
 import com.corsojava.fotoalbum.repository.PhotoRepository;
 
+import jakarta.validation.Valid;
+
 @RestController
 @CrossOrigin
 @RequestMapping("/api/comments")
@@ -39,7 +41,7 @@ public class CommentApiController {
 	
 	//CREATE
 	@PostMapping("/create/{id}")
-	public Comment create(@PathVariable("id") Long id, @RequestBody Comment comment) {
+	public Comment create(@PathVariable("id") Long id, @Valid @RequestBody Comment comment) {
 		Photo photo = photoR.getReferenceById(id);
 		comment.setPhoto(photo);
 		return commentR.save(comment);

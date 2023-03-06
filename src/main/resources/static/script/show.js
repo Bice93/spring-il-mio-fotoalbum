@@ -48,11 +48,20 @@ function addComment(photoId) {
       window.location.reload(); //Aggiorna/ricarica la pagina corrente,
     })
     .catch((err) => {
-      console.error('Errore nella richiesta', err);
+      console.error('Errore nella richiesta', err.response.data.errors);
+     	document.getElementById('text_err').innerHTML = '';
+     	showValidationErrors(err.response.data.errors)
     });
 }
 
 btn.onclick = function(){addComment(photoId)};
 
+function showValidationErrors(error) {
+	const errorList = error;
+	errorList.forEach(error => {
+		document.getElementById('text_err').innerHTML += "<li>" + error.defaultMessage + "</li>";
+	})
+
+}
 
 
