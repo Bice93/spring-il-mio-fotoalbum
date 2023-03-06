@@ -27,7 +27,8 @@ public class SecurityConfiguration {
 		.and().formLogin()
 		.and().logout()
 		.and().exceptionHandling()
-		.accessDeniedPage("/access-denied.html");
+		.accessDeniedPage("/access-denied.html")
+		.and().csrf().disable();
 		
 		return http.build();
 	}

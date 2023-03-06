@@ -98,5 +98,9 @@ body{
 	cursor: pointer;
 }
 
+#myBtnComment:hover{
+	background-color: rgb(219, 163, 154);
+}
+
 
 

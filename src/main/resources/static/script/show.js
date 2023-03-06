@@ -1,18 +1,18 @@
 const UrlParams = new URLSearchParams(window.location.search);
 const photoId = UrlParams.get('id');
-
+const btn = document.getElementById('myBtnComment');
+let photo;
+let categories;
+let comments;
 showPhoto(photoId);
 
 function showPhoto(photoId) {
     const url = `http://localhost:8080/api/photos/+${photoId}`;
     axios.get(url).then(response => {
-        console.log("richiesta ok", response);
-        const photo = response.data;
-        let categories = photo.categories;
-        let comments = photo.comments;
-        console.log(photo);
-        console.log(categories);
-        console.log(comments);
+        //console.log("richiesta ok", response);
+       	photo = response.data;
+        categories = photo.categories;
+        comments = photo.comments;
         document.getElementById("img").src = photo.url;
         document.getElementById("img").alt = `${photo.title}'s photo`;
         document.getElementById("photo_title").innerHTML = photo.title;
@@ -33,8 +33,26 @@ function showPhoto(photoId) {
             });
         };
     }).catch(error => {
-        console.log("richiesta errata", error);
+        //console.log("richiesta errata", error);
     })
 }
+
+function addComment(photoId) {
+  const textComment = document.querySelector('#text').value;
+ 
+  axios.post(`http://localhost:8080/api/comments/create/${photoId}`, {
+    text: textComment
+  })
+    .then((res) => {
+      console.log(res.data);
+      window.location.reload(); //Aggiorna/ricarica la pagina corrente,
+    })
+    .catch((err) => {
+      console.error('Errore nella richiesta', err);
+    });
+}
+
+btn.onclick = function(){addComment(photoId)};
+
 
 
