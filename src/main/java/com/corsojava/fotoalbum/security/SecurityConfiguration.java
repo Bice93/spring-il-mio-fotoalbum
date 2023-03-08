@@ -1,14 +1,24 @@
 package com.corsojava.fotoalbum.security;
 
+import java.io.IOException;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.logout.LogoutHandler;
+import org.springframework.security.web.authentication.logout.LogoutSuccessHandler;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
+
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
 @Configuration
 @EnableWebSecurity
@@ -25,7 +35,9 @@ public class SecurityConfiguration {
 		.requestMatchers(HttpMethod.POST, "*/categories/**").hasAuthority("ADMIN")
 		.requestMatchers("/**").permitAll()
 		.and().formLogin()
+		.loginPage("/login").permitAll()
 		.and().logout()
+		.logoutSuccessUrl("/")
 		.and().exceptionHandling()
 		.accessDeniedPage("/access-denied.html")
 		.and().csrf().disable();
