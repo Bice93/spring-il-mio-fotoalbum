@@ -5,6 +5,9 @@ body{
 	background-color: rgb(254, 252, 243);
 }
 
+main{
+	min-height: calc(100vh - 5rem - 10rem);
+}
 /* STYLE NAVBAR INDEX USER */
 #nav{
 	background-color: rgb(219, 163, 154);

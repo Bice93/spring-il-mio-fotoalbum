@@ -33,7 +33,12 @@ function showPhoto(photoId) {
             });
         };
     }).catch(error => {
-        //console.log("richiesta errata", error);
+        console.log("richiesta errata", error);
+        const box = document.getElementById("box_photo");
+        box.classList.add("d-none");
+        const boxHidden = document.getElementById("boxHidden");
+        boxHidden.classList.remove("d-none");
+       //window.location = "/"; //redirect alla pagina home
     })
 }
 
