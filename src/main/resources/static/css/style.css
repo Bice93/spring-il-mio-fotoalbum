@@ -8,6 +8,7 @@ body{
 main{
 	min-height: calc(100vh - 5rem - 10rem);
 }
+
 /* STYLE NAVBAR INDEX USER */
 #nav{
 	background-color: rgb(219, 163, 154);
@@ -103,6 +104,25 @@ main{
 
 #myBtnComment:hover, .myBtnForm:hover{
 	background-color: rgb(219, 163, 154);
+}
+
+/* STYLE ERROR PAGE */
+.errorPage{
+	background-image: url("https://cdn.dribbble.com/users/1265653/screenshots/17481030/something-went-wrong.gif");
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+	height: 100vh;
+	background-color: white;
+}
+
+.boxError{
+	margin: 10rem;
+}
+
+.boxError h1{
+	font-size: 6rem;
+	letter-spacing: .4rem;
 }
 
 

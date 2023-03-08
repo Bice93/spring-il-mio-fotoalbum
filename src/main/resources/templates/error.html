@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/css/bootstrap.min.css"
+	integrity="sha512-SbiR/eusphKoMVVXysTKG/7VseWii+Y3FdHrt0EpKgpToZeemhqHeZeLWLhJutz/2ut2Vw1uQEj2MbRF+TVBUA=="
+	crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+<link rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
+<title>Pagina errore</title>
+</head>
+<body class="errorPage">
+	<div class="boxError">
+		<h1>Ooops!</h1>
+		<p>Errore: [[${error}]]</p>
+		<a class="btn myBtnForm myBtnFormSize" href="javascript:history.go(-1)" onMouseOver="self.status=document.referrer;return true">Torna alla pagina precedente</a>
+	</div>
+</body>
+</html>

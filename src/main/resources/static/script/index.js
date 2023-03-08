@@ -33,7 +33,8 @@ function photoList() {
 		}
 
     }).catch((error) => {
-        //console.log("richiesta errata", error)
+        console.log("richiesta errata", error)
+        //window.location = "/error";
     })
 };
 
